@@ -1,18 +1,33 @@
-module AnagramsAntigramsMatchingLetter
-	def MatchingLetterArray(first_array, second_array)
-		matching_letter_arr = []
-		first_array.each do |letter|
-			if (second_array.include?(letter))
-				matching_letter_arr.push(letter)
+module AnagramsAntigramsMethod
+	def MatchingLetterArray(first_word, second_word)
+		first_word_array = first_word.split("")
+		second_word_array = second_word.split("")
+		matching_letter_array = []
+		first_word_array.each do |letter|
+			if (second_word_array.include?(letter))
+				matching_letter_array.push(letter)
 			end
 		end
-		matching_letter_arr	
+		matching_letter_array	
 	end
+
+	def is_actual_word?(word)
+		(word.match(/[aieouy]/)) && (!word.match(/([a-zA-Z0-9])\1{2,}/))
+	end
+
+	def is_antigrams?(matching_array)
+		matching_array.length == 0
+	end
+
+	def is_anagrams?(matching_array, first_array, second_array)
+		(first_array.length == matching_array.length) & (second_array.length == matching_array.length)
+	end
+
 end
 
 class AnagramsAntigrams
 	attr_accessor(:first_word, :second_word)
-	include AnagramsAntigramsMatchingLetter
+	include AnagramsAntigramsMethod
 
 	def initialize(first_word, second_word)
 		@first_word = first_word.downcase()
@@ -23,19 +38,18 @@ class AnagramsAntigrams
 	def find_anagrams 
 		@first_word.gsub!(/[^A-Za-z0-9]/,"")
 		@second_word.gsub(/[^A-Za-z0-9]/,"")
-		if (@first_word.match(/[aieouy]/)) && (@second_word.match(/[aieouy]/)) && (!@second_word.match(/([a-zA-Z0-9])\1{2,}/)) && (!@first_word.match(/([a-zA-Z0-9])\1{2,}/))
+		
+		if (is_actual_word?(@first_word)) && (is_actual_word?(@second_word))
 			if @first_word == @second_word
 				return "These words are palindromes"
 			else
-				first_word_arry = @first_word.split("")
-				second_word_arry = @second_word.split("")
-				matching_letter_arr = MatchingLetterArray(first_word_arry, second_word_arry)
-				if matching_letter_arr.length == 0
+				matching_array = MatchingLetterArray(@first_word, @second_word)
+				if is_antigrams?(matching_array)
 					return "These words have no letter matches and are antigrams"
-				elsif (second_word_arry.length == matching_letter_arr.length) & (first_word_arry.length == matching_letter_arr.length)
+				elsif is_anagrams?(matching_array, @first_word, @second_word)
 				 return "These words are anagrams"
 				else
-					"These words aren't anagrams but #{matching_letter_arr.length} letters match: #{matching_letter_arr.join(',')}" 
+					"These words aren't anagrams but #{matching_array.length} letters match: #{matching_array.join(',')}" 
 				end
 			end
 		else
