@@ -17,4 +17,12 @@ describe("Anagrams_Antilog") do
 		anagrams_antigrams_obj = AnagramsAntigrams.new("Racecar","Racecar")
 		expect(anagrams_antigrams_obj.find_anagrams()).to(eq("These words are palindromes"))
 	end
+
+	it("Check if the inputs are words") do
+		anagrams_antigrams_obj = AnagramsAntigrams.new("Rcr","Racecar")
+		expect(anagrams_antigrams_obj.find_anagrams()).to(eq("You need to input actual words!"))
+
+		anagrams_antigrams_obj = AnagramsAntigrams.new("Racecar","Rcr")
+		expect(anagrams_antigrams_obj.find_anagrams()).to(eq("You need to input actual words!"))
+	end
 end
