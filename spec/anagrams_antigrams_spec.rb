@@ -35,4 +35,14 @@ describe("Anagrams_Antilog") do
 		anagrams_antigrams_obj = AnagramsAntigrams.new("!!_A p_ple@#{$*}","!! kiw_i")
 		expect(anagrams_antigrams_obj.find_anagrams()).to(eq("These words have no letter matches and are antigrams"))
 	end
+
+	it("Check account for multiple words being anagrams or antigrams") do
+		anagrams_antigrams_obj = AnagramsAntigrams.new("cat","batty")
+		expect(anagrams_antigrams_obj.find_anagrams()).to(eq("These words aren't anagrams but 2 letters match: a,t"))
+	end
+
+	it("Check if same letter three consecutive times in words") do
+		anagrams_antigrams_obj = AnagramsAntigrams.new("caaat","batty")
+		expect(anagrams_antigrams_obj.find_anagrams()).to(eq("You need to input actual words!"))
+	end
 end
