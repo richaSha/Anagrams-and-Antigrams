@@ -1,21 +1,33 @@
+module AnagramsAntigramsMatchingLetter
+	def MatchingLetterArray(first_array, second_array)
+		matching_letter_arr = []
+		first_array.each do |letter|
+			if (second_array.include?(letter))
+				matching_letter_arr.push(letter)
+			end
+		end
+		matching_letter_arr	
+	end
+end
+
 class AnagramsAntigrams
 	attr_accessor(:first_word, :second_word)
 	def initialize(first_word, second_word)
 		@first_word = first_word
 		@second_word = second_word
 	end
+	include AnagramsAntigramsMatchingLetter
 	def find_anagrams
-		first_word_arry = @first_word.downcase().split("")
-		second_word_arry = @second_word.downcase().split("")
-		matching_letter_arr = []
-		first_word_arry.each do |letter|
-			if (second_word_arry.include?(letter)) & (first_word_arry.length == second_word_arry.length)
-				matching_letter_arr.push(letter)
-				# binding.pry
+		if @first_word == @second_word
+			return "These words are palindromes"
+		else
+			first_word_arry = @first_word.downcase().split("")
+			second_word_arry = @second_word.downcase().split("")
+			matching_letter_arr = MatchingLetterArray(first_word_arry, second_word_arry)
+			if (second_word_arry.length == matching_letter_arr.length) & (first_word_arry.length == matching_letter_arr.length)
+			 return "These words are anagrams"
 			end
 		end
-		if first_word_arry.length == matching_letter_arr.length
-		 return "These words are anagrams"
-		end
+		
 	end
 end

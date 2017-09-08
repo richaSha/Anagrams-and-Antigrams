@@ -12,4 +12,9 @@ describe("Anagrams_Antilog") do
 		anagrams_antigrams_obj = AnagramsAntigrams.new("Tea","Eat")
 		expect(anagrams_antigrams_obj.find_anagrams()).to(eq("These words are anagrams"))
 	end
+
+	it("If a word or phrase is an anagram, check if it's also a palindrome") do
+		anagrams_antigrams_obj = AnagramsAntigrams.new("Racecar","Racecar")
+		expect(anagrams_antigrams_obj.find_anagrams()).to(eq("These words are palindromes"))
+	end
 end
