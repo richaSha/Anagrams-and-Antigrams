@@ -30,4 +30,9 @@ describe("Anagrams_Antilog") do
 		anagrams_antigrams_obj = AnagramsAntigrams.new("Apple","kiwi")
 		expect(anagrams_antigrams_obj.find_anagrams()).to(eq("These words have no letter matches and are antigrams"))
 	end
+
+	it("Check account for multiple words being anagrams or antigrams") do
+		anagrams_antigrams_obj = AnagramsAntigrams.new("!!_A p_ple@#{$*}","!! kiw_i")
+		expect(anagrams_antigrams_obj.find_anagrams()).to(eq("These words have no letter matches and are antigrams"))
+	end
 end
