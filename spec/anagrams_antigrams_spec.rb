@@ -25,4 +25,9 @@ describe("Anagrams_Antilog") do
 		anagrams_antigrams_obj = AnagramsAntigrams.new("Racecar","Rcr")
 		expect(anagrams_antigrams_obj.find_anagrams()).to(eq("You need to input actual words!"))
 	end
+
+	it("Check If phrases aren't anagrams, the method should check whether they are actually antigrams") do
+		anagrams_antigrams_obj = AnagramsAntigrams.new("Apple","kiwi")
+		expect(anagrams_antigrams_obj.find_anagrams()).to(eq("These words have no letter matches and are antigrams"))
+	end
 end

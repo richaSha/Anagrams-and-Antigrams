@@ -30,7 +30,9 @@ class AnagramsAntigrams
 				first_word_arry = @first_word.downcase().split("")
 				second_word_arry = @second_word.downcase().split("")
 				matching_letter_arr = MatchingLetterArray(first_word_arry, second_word_arry)
-				if (second_word_arry.length == matching_letter_arr.length) & (first_word_arry.length == matching_letter_arr.length)
+				if matching_letter_arr.length == 0
+					return "These words have no letter matches and are antigrams"
+				elsif (second_word_arry.length == matching_letter_arr.length) & (first_word_arry.length == matching_letter_arr.length)
 				 return "These words are anagrams"
 				end
 			end
