@@ -39,10 +39,18 @@ describe("Anagrams_Antilog") do
 	it("Check if words aren't anagrams, return how many letters from the argument are actual matches with the receiver") do
 		anagrams_antigrams_obj = AnagramsAntigrams.new("cat","batty")
 		expect(anagrams_antigrams_obj.find_anagrams()).to(eq("These words aren't anagrams but 2 letters match: a,t"))
+		anagrams_antigrams_obj = AnagramsAntigrams.new("iio","ooi")
+		expect(anagrams_antigrams_obj.find_anagrams()).to(eq("These words aren't anagrams but 2 letters match: i,o"))
 	end
 
 	it("Check if same letter three consecutive times in words") do
 		anagrams_antigrams_obj = AnagramsAntigrams.new("caaat","batty")
 		expect(anagrams_antigrams_obj.find_anagrams()).to(eq("You need to input actual words!"))
 	end
+
+	it("Check if given words contain digits") do
+		anagrams_antigrams_obj = AnagramsAntigrams.new("hello1","hello")
+		expect(anagrams_antigrams_obj.find_anagrams()).to(eq("You need to input actual words!"))
+	end
+
 end
