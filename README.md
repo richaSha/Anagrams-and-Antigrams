@@ -42,7 +42,18 @@ _It will find Anagram and Antigram word. If two words are contain the exact same
 
 *Account for multiple words being anagrams or "antigrams"
 	* Example input1:!! racecar !!
-	* Example input2:!! Mom !!These words have no letter matches and are antigrams
+	* Example input2:!! Mom !!
+	* Example output:These words have no letter matches and are antigrams
+
+*If words aren't anagrams, return how many letters from the argument are actual matches with the receiver
+	* Example input1:cat
+	* Example input2:batty
+	* Example output:These words aren't anagrams but 2 letters match: a,t
+
+*If same letter three consecutive times in words
+	* Example input1:caaaar
+	* Example input2:raaaat
+	* Example output:You need to input actual words!
 
 
 ## Known Bugs

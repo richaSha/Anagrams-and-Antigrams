@@ -36,7 +36,7 @@ describe("Anagrams_Antilog") do
 		expect(anagrams_antigrams_obj.find_anagrams()).to(eq("These words have no letter matches and are antigrams"))
 	end
 
-	it("Check account for multiple words being anagrams or antigrams") do
+	it("Check if words aren't anagrams, return how many letters from the argument are actual matches with the receiver") do
 		anagrams_antigrams_obj = AnagramsAntigrams.new("cat","batty")
 		expect(anagrams_antigrams_obj.find_anagrams()).to(eq("These words aren't anagrams but 2 letters match: a,t"))
 	end
